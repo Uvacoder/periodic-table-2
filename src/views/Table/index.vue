@@ -22,7 +22,7 @@
         />
       </div>
 
-      <div class="table__lat-act">
+      <div class="table__series">
         <div
           class="table__row"
           v-for="(row, rowIndex) in seriesElements"
@@ -70,13 +70,10 @@ const seriesElements = [elements.slice(56, 71), elements.slice(88, 103)]
 @use '~@/style/variables';
 
 .table {
-  flex: 1;
   display: flex;
   justify-content: center;
 
   &__container {
-    display: flex;
-    flex-wrap: wrap;
     width: #{18 * variables.$element-width};
   }
 
@@ -85,7 +82,7 @@ const seriesElements = [elements.slice(56, 71), elements.slice(88, 103)]
     width: 100%;
   }
 
-  &__lat-act {
+  &__series {
     width: 100%;
     margin: 1rem 0;
   }
