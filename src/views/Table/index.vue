@@ -12,12 +12,12 @@
           :number="element.number"
           :symbol="element.symbol"
           :name="element.name"
-          :has-offset="ELEMENTS_NUMBERS_OFFSET.includes(element.number)"
-          :is-edge-bottom="
+          :has-offset="hasOffsetByNumber(element.number)"
+          :edge-bottom="
             rowIndex === commomElements.length - 1 || element.number === 39
           "
-          :is-edge-left="
-            elIndex === 0 || ELEMENTS_NUMBERS_OFFSET.includes(element.number)
+          :edge-left="
+            !elIndex || hasOffsetByNumber(element.number)
           "
         />
       </div>
@@ -35,8 +35,8 @@
             :symbol="element.symbol"
             :name="element.name"
             :has-offset="elIndex === 0"
-            :is-edge-bottom="rowIndex === seriesElements.length - 1"
-            :is-edge-left="elIndex === 0"
+            :edge-bottom="rowIndex === seriesElements.length - 1"
+            :edge-left="elIndex === 0"
           />
         </div>
       </div>
@@ -64,6 +64,10 @@ const commomElements = [
 ]
 
 const seriesElements = [elements.slice(56, 71), elements.slice(88, 103)]
+
+function hasOffsetByNumber (number) {
+  return ELEMENTS_NUMBERS_OFFSET.includes(number)
+}
 </script>
 
 <style scoped lang="scss">
