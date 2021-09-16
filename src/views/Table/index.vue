@@ -13,6 +13,7 @@
           :symbol="element.symbol"
           :name="element.name"
           :has-offset="hasOffsetByNumber(element.number)"
+          :color="categoryToColor(element.category)"
           :edge-bottom="
             rowIndex === commomElements.length - 1 || element.number === 39
           "
@@ -34,9 +35,10 @@
             :number="element.number"
             :symbol="element.symbol"
             :name="element.name"
-            :has-offset="elIndex === 0"
+            :has-offset="!elIndex"
+            :color="categoryToColor(element.category)"
             :edge-bottom="rowIndex === seriesElements.length - 1"
-            :edge-left="elIndex === 0"
+            :edge-left="!elIndex"
           />
         </div>
       </div>
@@ -52,7 +54,25 @@ import { elements } from '@/assets/data/elements.json'
 import Element from '@/components/Element'
 
 const ELEMENTS_NUMBERS_OFFSET = [2, 5, 13, 72, 104]
+const CATEGORY_COLORS = {
+  diatomic_nonmetal: 'red',
+  noble_gas: 'blue',
+  alkali_metal: 'green',
+  alkaline_earth_metal: 'yellow',
+  metalloid: 'purple',
+  polyatomic_nonmetal: 'orange',
+  post_transition_metal: 'pink',
+  transition_metal: 'gray',
+  lanthanide: 'cyan',
+  actinide: 'coral',
+  unknown__probably_transition_metal: 'gray',
+  unknown__probably_post_transition_metal: 'pink',
+  unknown__probably_metalloid: 'purple',
+  unknown__predicted_to_be_noble_gas: 'blue',
+  unknown__but_predicted_to_be_an_alkali_metal: 'green'
+}
 
+const seriesElements = [elements.slice(56, 71), elements.slice(88, 103)]
 const commomElements = [
   elements.slice(0, 2),
   elements.slice(2, 10),
@@ -63,11 +83,16 @@ const commomElements = [
   [...elements.slice(86, 88), ...elements.slice(103, 118)]
 ]
 
-const seriesElements = [elements.slice(56, 71), elements.slice(88, 103)]
-
 function hasOffsetByNumber (number) {
   return ELEMENTS_NUMBERS_OFFSET.includes(number)
 }
+
+function categoryToColor (rawCategory) {
+  const category = rawCategory.replace(/-|\s|,/ig, '_')
+
+  return CATEGORY_COLORS[category]
+}
+// console.log(new Set(elements.map(el => el.category)))
 </script>
 
 <style scoped lang="scss">

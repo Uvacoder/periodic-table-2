@@ -28,6 +28,10 @@ const props = defineProps({
     type: String,
     required: true
   },
+  color: {
+    type: String,
+    default: 'black'
+  },
   hasOffset: {
     type: Boolean,
     default: false
@@ -60,6 +64,7 @@ const aditionalClasses = computed(() => ({
   padding: 0.2rem;
   border-right: 1px solid gray;
   border-top: 1px solid gray;
+  background-color: v-bind('props.color');
   user-select: none;
 
   &__number {
