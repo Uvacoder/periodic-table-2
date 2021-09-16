@@ -32,11 +32,11 @@ const props = defineProps({
     type: Boolean,
     default: false
   },
-  isEdgeBottom: {
+  edgeBottom: {
     type: Boolean,
     default: false
   },
-  isEdgeLeft: {
+  edgeLeft: {
     type: Boolean,
     default: false
   }
@@ -44,8 +44,8 @@ const props = defineProps({
 
 const aditionalClasses = computed(() => ({
   offset: props.hasOffset,
-  'edge-bottom': props.isEdgeBottom,
-  'edge-left': props.isEdgeLeft
+  'edge-bottom': props.edgeBottom,
+  'edge-left': props.edgeLeft
 }))
 </script>
 
@@ -60,6 +60,7 @@ const aditionalClasses = computed(() => ({
   padding: 0.2rem;
   border-right: 1px solid gray;
   border-top: 1px solid gray;
+  user-select: none;
 
   &__number {
     display: flex;
