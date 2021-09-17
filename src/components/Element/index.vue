@@ -35,21 +35,11 @@ const props = defineProps({
   hasOffset: {
     type: Boolean,
     default: false
-  },
-  edgeBottom: {
-    type: Boolean,
-    default: false
-  },
-  edgeLeft: {
-    type: Boolean,
-    default: false
   }
 })
 
 const aditionalClasses = computed(() => ({
-  offset: props.hasOffset,
-  'edge-bottom': props.edgeBottom,
-  'edge-left': props.edgeLeft
+  offset: props.hasOffset
 }))
 </script>
 
@@ -61,11 +51,19 @@ const aditionalClasses = computed(() => ({
   flex-direction: column;
   width: variables.$element-width;
   height: variables.$element-height;
-  padding: 0.2rem;
-  border-right: 1px solid gray;
-  border-top: 1px solid gray;
-  background-color: v-bind('props.color');
+  margin: .11rem;
+  padding: 0.3rem;
+  font-family: variables.$default-font;
+  color: variables.$dark;
+  border-radius: variables.$radius;
+  background-color: variables.$light;
+  transition: variables.$default-transition;
   user-select: none;
+
+  &:hover {
+    color: variables.$dark;
+    background-color: v-bind('props.color');
+  }
 
   &__number {
     display: flex;
@@ -79,7 +77,7 @@ const aditionalClasses = computed(() => ({
   }
 
   &__name {
-    margin: 0 -0.2rem;
+    margin: 0 -0.3rem;
     text-align: center;
     font-size: 0.7rem;
     line-height: 1;
@@ -87,14 +85,6 @@ const aditionalClasses = computed(() => ({
 
   &.offset {
     margin-left: auto;
-  }
-
-  &.edge-bottom {
-    border-bottom: 1px solid gray;
-  }
-
-  &.edge-left {
-    border-left: 1px solid gray;
   }
 }
 </style>

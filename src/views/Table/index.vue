@@ -7,19 +7,13 @@
         :key="rowIndex"
       >
         <Element
-          v-for="(element, elIndex) in row"
+          v-for="element in row"
           :key="element.number"
           :number="element.number"
           :symbol="element.symbol"
           :name="element.name"
           :has-offset="hasOffsetByNumber(element.number)"
           :color="categoryToColor(element.category)"
-          :edge-bottom="
-            rowIndex === commomElements.length - 1 || element.number === 39
-          "
-          :edge-left="
-            !elIndex || hasOffsetByNumber(element.number)
-          "
         />
       </div>
 
@@ -37,8 +31,6 @@
             :name="element.name"
             :has-offset="!elIndex"
             :color="categoryToColor(element.category)"
-            :edge-bottom="rowIndex === seriesElements.length - 1"
-            :edge-left="!elIndex"
           />
         </div>
       </div>
@@ -99,13 +91,11 @@ function categoryToColor (rawCategory) {
 @use '~@/style/variables';
 
 .table {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  padding: .5rem;
 
   &__container {
-    width: #{18 * variables.$element-width};
-    margin: 1rem 0;
+    width: #{18 * (variables.$element-width + .22rem)};
+    margin: auto;
   }
 
   &__row {
