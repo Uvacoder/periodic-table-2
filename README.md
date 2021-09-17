@@ -3,7 +3,9 @@
 ## TODO
 
 - [ ] Popover with name
+- [ ] Colors by group
 - [ ] Search by symbol and name
+  - [ ] Colors by resulting match
 - [ ] Legends of element
 - [ ] Menu
   - [ ] Icons
