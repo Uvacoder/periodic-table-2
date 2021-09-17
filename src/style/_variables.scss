@@ -1,3 +1,14 @@
 // Element
 $element-width: 4rem;
 $element-height: 4.7rem;
+
+// Colors
+$dark: #212529;
+$light: #f8f9fa;
+$blue: #003b6f;
+
+// Timers
+$time-fast: .1s;
+
+// Transitions
+$default-transition: all $time-fast linear;
