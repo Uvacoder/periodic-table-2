@@ -1,8 +1,29 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link>
+  <div class="overlay">
+    <Menu/>
+    <div class="pages">
+      <router-view />
+    </div>
   </div>
-  <router-view />
 </template>
 
-<style lang="scss"></style>
+<script setup>
+// Components
+import Menu from './components/Menu'
+</script>
+
+<style lang="scss">
+@use '~@/style/variables';
+
+.overlay {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  background-color: rgba(variables.$blue, .6);
+
+  .pages {
+    width: auto;
+    height: 100vh;
+    overflow: hidden auto;
+  }
+}
+</style>
