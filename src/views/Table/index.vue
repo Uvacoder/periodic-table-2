@@ -55,21 +55,22 @@ import Element from '@/components/Element'
 
 const ELEMENTS_NUMBERS_OFFSET = [2, 5, 13, 72, 104]
 const CATEGORY_COLORS = {
-  diatomic_nonmetal: 'red',
-  noble_gas: 'blue',
-  alkali_metal: 'green',
-  alkaline_earth_metal: 'yellow',
-  metalloid: 'purple',
-  polyatomic_nonmetal: 'orange',
-  post_transition_metal: 'pink',
-  transition_metal: 'gray',
-  lanthanide: 'cyan',
-  actinide: 'coral',
-  unknown__probably_transition_metal: 'gray',
-  unknown__probably_post_transition_metal: 'pink',
+  noble_gas: '#93ceed',
+  alkali_metal: '#ff6666',
+  alkaline_earth_metal: '#fedead',
+  metalloid: '#cccc9a',
+  nonmetal: '#f1ff90',
+  halogen: '#c1feff',
+  post_transition_metal: '#cccccc',
+  transition_metal: '#ffc0bf',
+  lanthanide: '#ffbffe',
+  actinide: '#ff99cb',
+  unknown__probably_transition_metal: '#ffc0bf',
+  unknown__probably_post_transition_metal: '#cccccc',
   unknown__probably_metalloid: 'purple',
-  unknown__predicted_to_be_noble_gas: 'blue',
-  unknown__but_predicted_to_be_an_alkali_metal: 'green'
+  unknown__predicted_to_be_noble_gas: '#93ceed',
+  unknown__but_predicted_to_be_an_alkali_metal: 'green',
+  unknown__probably_halogen: '#c1feff'
 }
 
 const seriesElements = [elements.slice(56, 71), elements.slice(88, 103)]
@@ -92,7 +93,6 @@ function categoryToColor (rawCategory) {
 
   return CATEGORY_COLORS[category]
 }
-// console.log(new Set(elements.map(el => el.category)))
 </script>
 
 <style scoped lang="scss">
@@ -101,9 +101,11 @@ function categoryToColor (rawCategory) {
 .table {
   display: flex;
   justify-content: center;
+  align-items: center;
 
   &__container {
     width: #{18 * variables.$element-width};
+    margin: 1rem 0;
   }
 
   &__row {
@@ -113,7 +115,7 @@ function categoryToColor (rawCategory) {
 
   &__series {
     width: 100%;
-    margin: 1rem 0;
+    margin-top: 1rem;
   }
 }
 </style>
