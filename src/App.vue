@@ -1,6 +1,6 @@
 <template>
   <div class="overlay">
-    <Menu/>
+    <Menu />
     <div class="pages">
       <router-view />
     </div>
@@ -18,7 +18,7 @@ import Menu from './components/Menu'
 .overlay {
   display: grid;
   grid-template-columns: auto 1fr;
-  background-color: rgba(variables.$blue, .6);
+  background-color: variables.$blue;
 
   .pages {
     width: auto;
