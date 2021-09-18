@@ -76,12 +76,12 @@ const commomElements = [
   [...elements.slice(86, 88), ...elements.slice(103, 118)]
 ]
 
-function hasOffsetByNumber (number) {
+function hasOffsetByNumber(number) {
   return ELEMENTS_NUMBERS_OFFSET.includes(number)
 }
 
-function categoryToColor (rawCategory) {
-  const category = rawCategory.replace(/-|\s|,/ig, '_')
+function categoryToColor(rawCategory) {
+  const category = rawCategory.replace(/-|\s|,/gi, '_')
 
   return CATEGORY_COLORS[category]
 }
@@ -91,10 +91,10 @@ function categoryToColor (rawCategory) {
 @use '~@/style/variables';
 
 .table {
-  padding: .5rem;
+  padding: 0.5rem;
 
   &__container {
-    width: #{18 * (variables.$element-width + .22rem)};
+    width: #{18 * (variables.$element-width + 0.22rem)};
     margin: auto;
   }
 

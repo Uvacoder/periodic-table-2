@@ -51,7 +51,7 @@ const aditionalClasses = computed(() => ({
   flex-direction: column;
   width: variables.$element-width;
   height: variables.$element-height;
-  margin: .11rem;
+  margin: 0.11rem;
   padding: 0.3rem;
   font-family: variables.$default-font;
   color: variables.$dark;
