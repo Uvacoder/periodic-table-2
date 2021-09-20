@@ -20,6 +20,11 @@ body {
   color: variables.$dark;
 }
 
+.unicon {
+  display: flex;
+  line-height: 1;
+}
+
 #app {
   height: 100vh;
   overflow: hidden;
