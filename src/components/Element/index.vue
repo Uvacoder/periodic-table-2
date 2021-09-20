@@ -55,6 +55,7 @@ const aditionalClasses = computed(() => ({
   padding: 0.3rem;
   font-family: variables.$default-font;
   color: variables.$dark;
+  border: variables.$default-border;
   border-radius: variables.$radius;
   background-color: variables.$light;
   transition: variables.$default-transition;

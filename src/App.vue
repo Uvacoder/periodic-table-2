@@ -18,7 +18,7 @@ import Menu from './components/Menu'
 .overlay {
   display: grid;
   grid-template-columns: auto 1fr;
-  background-color: variables.$blue;
+  background-color: variables.$light;
 
   .pages {
     width: auto;

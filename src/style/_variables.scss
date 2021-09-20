@@ -6,13 +6,17 @@ $element-height: 4.7rem;
 $dark: #212529;
 $light: #f8f9fa;
 $blue: #003b6f;
+$light-gray: #ced4da;
+
+// Borders
+$default-border: 1px solid $light-gray;
 
 // Radius
-$radius-sm: .25rem;
-$radius: .4rem;
+$radius-sm: 0.25rem;
+$radius: 0.4rem;
 
 // Timers
-$time-fast: .1s;
+$time-fast: 0.1s;
 
 // Transitions
 $default-transition: all $time-fast linear;
