@@ -23,7 +23,7 @@ import Menu from './components/Menu'
   .pages {
     width: auto;
     height: 100vh;
-    overflow: hidden auto;
+    overflow: auto;
   }
 }
 </style>
