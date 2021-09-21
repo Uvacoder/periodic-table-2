@@ -1,6 +1,12 @@
 import Unicon from 'vue-unicons'
-import { uniBars } from 'vue-unicons/dist/icons'
+import {
+  uniAngleDown,
+  uniBars,
+  uniCheck,
+  uniMultiply,
+  uniObjectGroup
+} from 'vue-unicons/dist/icons'
 
-Unicon.add([uniBars])
+Unicon.add([uniBars, uniMultiply, uniObjectGroup, uniAngleDown, uniCheck])
 
 export default Unicon
