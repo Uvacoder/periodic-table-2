@@ -1,19 +1,25 @@
 <template>
   <div class="item" :class="additionalClasses">
-    <div class="item__icon">
-      <unicon :name="props.icon" />
+    <div class="item__self">
+      <div class="item__icon">
+        <unicon :name="props.icon" />
+      </div>
+      <div class="item__label" v-if="props.isExpanded">
+        {{ props.label }}
+      </div>
+      <div class="item__toggle" v-if="props.isExpanded" @click="toggleSubitems">
+        <unicon name="angle-down" />
+      </div>
     </div>
-    <div class="item__label" v-if="props.isExpanded">
-      {{ props.label }}
-    </div>
-    <div class="item__toggle" v-if="props.isExpanded">
-      <unicon name="angle-down" />
+
+    <div class="item__subitems" v-if="isSubitemsOpen">
+      <slot />
     </div>
   </div>
 </template>
 
 <script setup>
-import { computed, defineProps } from 'vue'
+import { computed, defineProps, reactive } from 'vue'
 
 const props = defineProps({
   label: {
@@ -30,9 +36,22 @@ const props = defineProps({
   }
 })
 
+const state = reactive({
+  showSubitems: false
+})
+
+const isSubitemsOpen = computed(() => {
+  return props.isExpanded && state.showSubitems
+})
+
 const additionalClasses = computed(() => ({
-  'item--expanded': props.isExpanded
+  'item--expanded': props.isExpanded,
+  'item--show-subitems': state.showSubitems
 }))
+
+function toggleSubitems() {
+  state.showSubitems = !state.showSubitems
+}
 </script>
 
 <style scoped lang="scss">
@@ -41,11 +60,18 @@ const additionalClasses = computed(() => ({
 .item {
   display: flex;
   align-items: center;
-  padding: 0.5rem;
-  border-radius: variables.$radius-sm;
+  flex-wrap: wrap;
 
-  &:hover {
-    background-color: lighten(variables.$light-gray, 12);
+  &__self {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: variables.$radius-sm;
+
+    &:hover {
+      background-color: lighten(variables.$light-gray, 12);
+    }
   }
 
   &__icon,
@@ -60,6 +86,16 @@ const additionalClasses = computed(() => ({
 
   &__toggle {
     margin-left: auto;
+    cursor: pointer;
+  }
+
+  &__subitems {
+    width: 100%;
+    padding-left: 0.5rem;
+  }
+
+  &--show-subitems &__toggle {
+    transform: rotateZ(180deg);
   }
 }
 </style>
