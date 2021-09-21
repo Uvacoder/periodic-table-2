@@ -40,7 +40,7 @@ const props = defineProps({
     required: true
   },
   value: {
-    required: true
+    // v-model
   },
   checked: {
     type: Boolean,
@@ -74,7 +74,7 @@ function check({ target }) {
 
     emit('update:modelValue', updateValues)
   } else {
-    emit('update:modelValue', target.value)
+    emit('update:modelValue', target.checked)
   }
 }
 
