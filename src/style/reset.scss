@@ -20,9 +20,17 @@ body {
   color: variables.$dark;
 }
 
+ul {
+  list-style: none;
+}
+
 .unicon {
   display: flex;
   line-height: 1;
+
+  > svg {
+    margin-bottom: -2px;
+  }
 }
 
 #app {
