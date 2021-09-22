@@ -1,13 +1,13 @@
 <template>
   <div class="item" :class="additionalClasses">
-    <div class="item__self">
+    <div class="item__self" @click="toggleSubitems">
       <div class="item__icon">
         <unicon :name="props.icon" />
       </div>
       <div class="item__label" v-if="props.isExpanded">
         {{ props.label }}
       </div>
-      <div class="item__toggle" v-if="props.isExpanded" @click="toggleSubitems">
+      <div class="item__toggle" v-if="props.isExpanded">
         <unicon name="angle-down" />
       </div>
     </div>
@@ -68,6 +68,7 @@ function toggleSubitems() {
     align-items: center;
     padding: 0.5rem;
     border-radius: variables.$radius-sm;
+    cursor: pointer;
 
     &:hover {
       background-color: lighten(variables.$light-gray, 12);
@@ -86,12 +87,11 @@ function toggleSubitems() {
 
   &__toggle {
     margin-left: auto;
-    cursor: pointer;
   }
 
   &__subitems {
     width: 100%;
-    padding-left: 0.5rem;
+    padding-left: 1rem;
   }
 
   &--show-subitems &__toggle {
