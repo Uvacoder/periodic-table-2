@@ -56,13 +56,7 @@ const CATEGORY_COLORS = {
   post_transition_metal: '#cccccc',
   transition_metal: '#ffc0bf',
   lanthanide: '#ffbffe',
-  actinide: '#ff99cb',
-  unknown__probably_transition_metal: '#ffc0bf',
-  unknown__probably_post_transition_metal: '#cccccc',
-  unknown__probably_metalloid: 'purple',
-  unknown__predicted_to_be_noble_gas: '#93ceed',
-  unknown__but_predicted_to_be_an_alkali_metal: 'green',
-  unknown__probably_halogen: '#c1feff'
+  actinide: '#ff99cb'
 }
 
 const seriesElements = [elements.slice(56, 71), elements.slice(88, 103)]
