@@ -35,11 +35,16 @@ const props = defineProps({
   hasOffset: {
     type: Boolean,
     default: false
+  },
+  isSelected: {
+    type: Boolean,
+    default: false
   }
 })
 
 const aditionalClasses = computed(() => ({
-  offset: props.hasOffset
+  'element--offset': props.hasOffset,
+  'element--selected': props.isSelected
 }))
 </script>
 
@@ -61,7 +66,8 @@ const aditionalClasses = computed(() => ({
   transition: variables.$default-transition;
   user-select: none;
 
-  &:hover {
+  &:hover,
+  &--selected {
     color: variables.$dark;
     background-color: v-bind('props.color');
   }
@@ -84,7 +90,7 @@ const aditionalClasses = computed(() => ({
     line-height: 1;
   }
 
-  &.offset {
+  &--offset {
     margin-left: auto;
   }
 }

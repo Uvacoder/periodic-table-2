@@ -14,6 +14,7 @@
           :name="element.name"
           :has-offset="hasOffsetByNumber(element.number)"
           :color="categoryToColor(element.category)"
+          :is-selected="isSelected(element.category)"
         />
       </div>
 
@@ -31,6 +32,7 @@
             :name="element.name"
             :has-offset="!elIndex"
             :color="categoryToColor(element.category)"
+            :is-selected="isSelected(element.category)"
           />
         </div>
       </div>
@@ -44,6 +46,11 @@ import { elements } from '@/assets/data/elements.json'
 
 // Components
 import Element from '@/components/Element'
+
+// Store
+import useStore from '@/hooks/useStore'
+
+const categoryStore = useStore('category')
 
 const ELEMENTS_NUMBERS_OFFSET = [2, 5, 13, 72, 104]
 const CATEGORY_COLORS = {
@@ -78,6 +85,10 @@ function categoryToColor(rawCategory) {
   const category = rawCategory.replace(/-|\s|,/gi, '_')
 
   return CATEGORY_COLORS[category]
+}
+
+function isSelected(category) {
+  return categoryStore.state.selectedCategories.includes(category)
 }
 </script>
 
