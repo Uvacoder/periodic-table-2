@@ -1,9 +1,9 @@
 # Periodic Table
 
-## TODO
+## TODOs
 
-- [ ] Popover with name
-- [ ] Colors by group
+- [ ] ~~Popover with name~~
+- [x] Colors by group
 - [ ] Search by symbol and name
   - [ ] Colors by resulting match
 - [ ] Legends of element
