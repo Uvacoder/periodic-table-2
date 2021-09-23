@@ -1,12 +1,8 @@
-import { createStore } from 'vuex'
+import { readonly } from 'vue'
 
-export default createStore({
-  state: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
+// Modules
+import category from './category'
+
+export default readonly({
+  category
 })
