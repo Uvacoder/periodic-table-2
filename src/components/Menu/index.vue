@@ -6,16 +6,41 @@
       </span>
     </header>
 
-    <ul class="menu__items"></ul>
+    <ul class="menu__items">
+      <MenuItem
+        label="Group by"
+        icon="object-group"
+        :is-expanded="state.isOpen"
+      >
+        <FormCheckbox id="all-groups" label="All" v-model="groups.state.all" />
+        <FormCheckbox
+          v-for="category in groups.categories"
+          :key="category.value"
+          :id="category.value"
+          :label="category.label"
+          :value="category.value"
+          v-model="groups.state.groups"
+        />
+      </MenuItem>
+    </ul>
   </sidebar>
 </template>
 
 <script setup>
 import { computed, reactive } from 'vue'
 
+// Components
+import MenuItem from './Item.vue'
+import FormCheckbox from '../Forms/Checkbox'
+
+// Composables
+import useGroups from './composables/useGroups'
+
 const state = reactive({
   isOpen: false
 })
+
+const groups = useGroups()
 
 const defineToggleIcon = computed(() => (state.isOpen ? 'multiply' : 'bars'))
 const additionalClasses = computed(() => ({

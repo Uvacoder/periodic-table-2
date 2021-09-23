@@ -1,43 +1,45 @@
 import { computed, reactive, watch } from 'vue'
+import useStore from '@/hooks/useStore'
 
 export default function useGroups() {
+  const categoryStore = useStore('category')
+
   const state = reactive({
-    allGroups: false,
+    all: false,
     groups: []
   })
 
   const categories = [
-    { label: 'Noble gas', value: 'noble_gas' },
-    { label: 'Alkali metal', value: 'alkali_metal' },
-    { label: 'Alkaline earth metal', value: 'alkaline_earth_metal' },
+    { label: 'Noble gas', value: 'noble gas' },
+    { label: 'Alkali metal', value: 'alkali metal' },
+    { label: 'Alkaline earth metal', value: 'alkaline earth metal' },
     { label: 'Metalloid', value: 'metalloid' },
     { label: 'Nonmetal', value: 'nonmetal' },
     { label: 'Halogen', value: 'halogen' },
-    { label: 'Post transition metal', value: 'post_transition_metal' },
-    { label: 'Transition metal', value: 'transition_metal' },
+    { label: 'Post-transition metal', value: 'post-transition metal' },
+    { label: 'Transition metal', value: 'transition metal' },
     { label: 'Lanthanide', value: 'lanthanide' },
     { label: 'Actinide', value: 'actinide' }
   ]
 
-  const isAllGroupsChecked = computed(
-    () => state.groups.length === categories.length
-  )
+  const isAllChecked = computed(() => state.groups.length === categories.length)
 
-  watch(() => state.allGroups, handleAllGroups)
-  watch(() => state.groups, handleGroups)
+  watch(() => state.all, handleAll)
+  watch(() => state.groups, handleGroups, { immediate: true })
 
-  function handleAllGroups(value) {
+  function handleAll(value) {
     if (value) {
       state.groups = categories.map(item => item.value)
     } else {
-      if (isAllGroupsChecked.value) {
+      if (isAllChecked.value) {
         state.groups = []
       }
     }
   }
 
   function handleGroups(value) {
-    state.allGroups = isAllGroupsChecked.value
+    state.all = isAllChecked.value
+    categoryStore.actions.updateCategories(value)
   }
 
   return {
