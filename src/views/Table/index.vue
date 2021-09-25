@@ -96,8 +96,6 @@ function isSelected(category) {
 @use '~@/style/variables';
 
 .table {
-  padding: 0.5rem;
-
   &__container {
     width: #{18 * (variables.$element-width + 0.22rem)};
     margin: auto;

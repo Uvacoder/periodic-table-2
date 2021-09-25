@@ -1,7 +1,14 @@
 <template>
   <div class="overlay">
-    <Menu />
-    <div class="pages">
+    <header class="overlay__branding">
+      <!-- <h1 class="branding__title">Periodic Table of Chemical Elements</h1> -->
+    </header>
+
+    <div class="overlay__menu">
+      <Menu />
+    </div>
+
+    <div class="overlay__pages">
       <router-view />
     </div>
   </div>
@@ -15,14 +22,33 @@ import Menu from './components/Menu'
 <style lang="scss">
 @use '~@/style/variables';
 
+$grid-bars-dimention: 4.2rem;
+
 .overlay {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template:
+    'menu branding' #{$grid-bars-dimention}
+    'menu pages' 1fr
+    / auto 1fr;
   background-color: variables.$light;
 
-  .pages {
-    width: auto;
-    height: 100vh;
+  &__branding {
+    grid-area: branding;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+  }
+
+  &__menu {
+    grid-area: menu;
+    z-index: 999;
+  }
+
+  &__pages {
+    grid-area: pages;
+    width: 100%;
+    height: calc(100vh - $grid-bars-dimention);
+    padding: 0.5rem;
     overflow: auto;
   }
 }
