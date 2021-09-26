@@ -3,13 +3,13 @@ import useStore from '@/hooks/useStore'
 
 export default function useGroups() {
   const categoryStore = useStore('category')
+  const global = categoryStore.state
 
   const state = reactive({
-    all: false,
-    groups: []
+    all: false
   })
 
-  const categories = [
+  const list = [
     { label: 'Noble gas', value: 'noble gas' },
     { label: 'Alkali metal', value: 'alkali metal' },
     { label: 'Alkaline earth metal', value: 'alkaline earth metal' },
@@ -22,28 +22,28 @@ export default function useGroups() {
     { label: 'Actinide', value: 'actinide' }
   ]
 
-  const isAllChecked = computed(() => state.groups.length === categories.length)
+  const isAllChecked = computed(() => global.selected.length === list.length)
 
   watch(() => state.all, handleAll)
-  watch(() => state.groups, handleGroups, { immediate: true })
 
   function handleAll(value) {
     if (value) {
-      state.groups = categories.map(item => item.value)
+      handleCategory(list.map(item => item.value))
     } else {
       if (isAllChecked.value) {
-        state.groups = []
+        handleCategory([])
       }
     }
   }
 
-  function handleGroups(value) {
-    state.all = isAllChecked.value
-    categoryStore.actions.updateCategories(value)
+  function handleCategory(categories) {
+    categoryStore.actions.updateSelected(categories)
   }
 
   return {
-    categories,
-    state
+    list,
+    state,
+    global,
+    handleCategory
   }
 }

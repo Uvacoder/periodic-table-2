@@ -12,14 +12,19 @@
         icon="object-group"
         :is-expanded="state.isOpen"
       >
-        <FormCheckbox id="all-groups" label="All" v-model="groups.state.all" />
         <FormCheckbox
-          v-for="category in groups.categories"
+          id="all-groups"
+          label="All"
+          v-model="categories.state.all"
+        />
+        <FormCheckbox
+          v-for="category in categories.list"
           :key="category.value"
           :id="category.value"
           :label="category.label"
           :value="category.value"
-          v-model="groups.state.groups"
+          :model-value="categories.global.selected"
+          @update:modelValue="categories.handleCategory"
         />
       </MenuItem>
     </ul>
@@ -34,13 +39,13 @@ import MenuItem from './Item.vue'
 import FormCheckbox from '../Forms/Checkbox'
 
 // Composables
-import useGroups from './composables/useGroups'
+import useCategory from './composables/useCategory'
 
 const state = reactive({
   isOpen: false
 })
 
-const groups = useGroups()
+const categories = useCategory()
 
 const defineToggleIcon = computed(() => (state.isOpen ? 'multiply' : 'bars'))
 const additionalClasses = computed(() => ({

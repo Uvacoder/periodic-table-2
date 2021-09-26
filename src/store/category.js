@@ -1,29 +1,17 @@
-import { computed, reactive } from 'vue'
+import { reactive } from 'vue'
 
 const state = reactive({
-  selectedCategories: []
+  selected: []
 })
 
-// Getters
-const isCategorySelected = category =>
-  computed(() => state.selectedCategories.includes(category))
-
 // Actions
-function updateCategories(categories) {
-  state.selectedCategories = [...categories]
-}
-
-function clearAll() {
-  state.selectedCategories = []
+function updateSelected(categories) {
+  state.selected = [...categories]
 }
 
 export default {
   state,
-  getters: {
-    isCategorySelected
-  },
   actions: {
-    updateCategories,
-    clearAll
+    updateSelected
   }
 }

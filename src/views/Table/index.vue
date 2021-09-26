@@ -88,7 +88,7 @@ function categoryToColor(rawCategory) {
 }
 
 function isSelected(category) {
-  return categoryStore.state.selectedCategories.includes(category)
+  return categoryStore.state.selected.includes(category)
 }
 </script>
 
