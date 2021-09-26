@@ -1,7 +1,7 @@
 <template>
   <div class="overlay">
     <header class="overlay__branding">
-      <!-- <h1 class="branding__title">Periodic Table of Chemical Elements</h1> -->
+      <Navbar />
     </header>
 
     <div class="overlay__menu">
@@ -16,6 +16,7 @@
 
 <script setup>
 // Components
+import Navbar from './components/Navbar'
 import Menu from './components/Menu'
 </script>
 
@@ -36,7 +37,7 @@ $grid-bars-dimention: 4.2rem;
     grid-area: branding;
     display: flex;
     align-items: center;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
   }
 
   &__menu {
