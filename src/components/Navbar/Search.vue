@@ -6,9 +6,10 @@
       @focus="toggleFocus"
       @blur="toggleFocus"
       @input="debounce"
+      :value="search.state.query"
     />
-    <button>
-      <unicon name="search" fill="currentColor" />
+    <button :disabled="isButtonDisabled" @click="clearSearch">
+      <unicon :name="buttonIcon" fill="currentColor" />
     </button>
   </div>
 </template>
@@ -26,6 +27,8 @@ const state = reactive({
   isFocused: false
 })
 
+const isButtonDisabled = computed(() => !search.state.query)
+const buttonIcon = computed(() => (isButtonDisabled.value ? 'search' : 'times'))
 const aditionalClasses = computed(() => ({
   'search--focus': state.isFocused
 }))
@@ -37,6 +40,10 @@ function toggleFocus() {
 function updatedQuery({ target }) {
   search.actions.updateQuery(target.value)
 }
+
+function clearSearch() {
+  search.actions.updateQuery('')
+}
 </script>
 
 <style scoped lang="scss">
@@ -46,7 +53,7 @@ function updatedQuery({ target }) {
   display: flex;
   width: 18rem;
   height: 2.25rem;
-  padding: 0.25rem 0.75rem;
+  padding: 0 0.75rem;
   border-radius: variables.$radius;
   background-color: #fff;
   transition: variables.$default-transition;
@@ -72,6 +79,7 @@ function updatedQuery({ target }) {
     border: none;
     background-color: transparent;
     color: variables.$light-gray;
+    cursor: pointer;
   }
 }
 </style>

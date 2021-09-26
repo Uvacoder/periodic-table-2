@@ -4,9 +4,19 @@ import {
   uniBars,
   uniCheck,
   uniMultiply,
-  uniObjectGroup
+  uniObjectGroup,
+  uniSearch,
+  uniTimes
 } from 'vue-unicons/dist/icons'
 
-Unicon.add([uniBars, uniMultiply, uniObjectGroup, uniAngleDown, uniCheck])
+Unicon.add([
+  uniBars,
+  uniMultiply,
+  uniObjectGroup,
+  uniAngleDown,
+  uniCheck,
+  uniSearch,
+  uniTimes
+])
 
 export default Unicon
