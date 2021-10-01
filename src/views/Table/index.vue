@@ -1,5 +1,7 @@
 <template>
   <section class="table">
+    <Legend />
+
     <div class="table__container">
       <div
         class="table__row"
@@ -45,6 +47,7 @@
 import { elements } from '@/assets/data/elements.json'
 
 // Components
+import Legend from './Legend.vue'
 import Element from '@/components/Element'
 
 // Composables
@@ -90,6 +93,8 @@ function categoryToColor(rawCategory) {
 @use '~@/style/variables';
 
 .table {
+  position: relative;
+
   &__container {
     width: #{18 * (variables.$element-width + 0.22rem)};
     margin: auto;
