@@ -3,7 +3,7 @@
     <h1 class="navbar__title">
       Periodic Table of Chemical Elements
     </h1>
-    <Legend />
+
     <Search />
   </header>
 </template>
@@ -11,7 +11,6 @@
 <script setup>
 // Components
 import Search from './Search.vue'
-import Legend from './Legend.vue'
 </script>
 
 <style scoped lang="scss">

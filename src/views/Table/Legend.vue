@@ -22,7 +22,7 @@
 
 .legend {
   position: absolute;
-  top: calc(100% + 2.5rem);
+  top: 0;
   left: 50%;
   display: flex;
   flex-direction: column;
