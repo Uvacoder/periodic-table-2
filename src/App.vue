@@ -1,7 +1,7 @@
 <template>
   <div class="overlay">
     <header class="overlay__branding">
-      <Navbar />
+      <TheHeader />
     </header>
 
     <div class="overlay__menu">
@@ -16,7 +16,7 @@
 
 <script setup>
 // Components
-import Navbar from './components/Navbar'
+import TheHeader from './components/TheHeader'
 import Menu from './components/Menu'
 </script>
 

@@ -1,21 +1,24 @@
 <template>
-  <nav class="navbar">
+  <header class="the-header">
     <h1 class="navbar__title">
       Periodic Table of Chemical Elements
     </h1>
+    <Legend />
     <Search />
-  </nav>
+  </header>
 </template>
 
 <script setup>
 // Components
 import Search from './Search.vue'
+import Legend from './Legend.vue'
 </script>
 
 <style scoped lang="scss">
 @use '~@/style/variables';
 
-.navbar {
+.the-header {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
