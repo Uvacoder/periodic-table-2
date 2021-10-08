@@ -1,6 +1,8 @@
 <template>
   <section class="table">
     <div class="table__container">
+      <Legend />
+
       <div
         class="table__row"
         v-for="(row, rowIndex) in commomElements"
@@ -12,8 +14,8 @@
           :number="element.number"
           :symbol="element.symbol"
           :name="element.name"
+          :category="defineCategory(element.category)"
           :has-offset="hasOffsetByNumber(element.number)"
-          :color="categoryToColor(element.category)"
           :is-selected="isSelected(element)"
         />
       </div>
@@ -30,8 +32,8 @@
             :number="element.number"
             :symbol="element.symbol"
             :name="element.name"
+            :category="defineCategory(element.category)"
             :has-offset="!elIndex"
-            :color="categoryToColor(element.category)"
             :is-selected="isSelected(element)"
           />
         </div>
@@ -45,24 +47,13 @@
 import { elements } from '@/assets/data/elements.json'
 
 // Components
+import Legend from './Legend.vue'
 import Element from '@/components/Element'
 
 // Composables
 import { isSelected } from './composables/selection'
 
 const ELEMENTS_NUMBERS_OFFSET = [2, 5, 13, 72, 104]
-const CATEGORY_COLORS = {
-  noble_gas: '#93ceed',
-  alkali_metal: '#ff6666',
-  alkaline_earth_metal: '#fedead',
-  metalloid: '#cccc9a',
-  nonmetal: '#f1ff90',
-  halogen: '#c1feff',
-  post_transition_metal: '#cccccc',
-  transition_metal: '#ffc0bf',
-  lanthanide: '#ffbffe',
-  actinide: '#ff99cb'
-}
 
 const seriesElements = [elements.slice(56, 71), elements.slice(88, 103)]
 const commomElements = [
@@ -79,10 +70,8 @@ function hasOffsetByNumber(number) {
   return ELEMENTS_NUMBERS_OFFSET.includes(number)
 }
 
-function categoryToColor(rawCategory) {
-  const category = rawCategory.replace(/-|\s|,/gi, '_')
-
-  return CATEGORY_COLORS[category]
+function defineCategory(rawCategory) {
+  return rawCategory.replace(/-|\s|,/gi, '_')
 }
 </script>
 
@@ -91,6 +80,7 @@ function categoryToColor(rawCategory) {
 
 .table {
   &__container {
+    position: relative;
     width: #{18 * (variables.$element-width + 0.22rem)};
     margin: auto;
   }

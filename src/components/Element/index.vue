@@ -28,9 +28,9 @@ const props = defineProps({
     type: String,
     required: true
   },
-  color: {
+  category: {
     type: String,
-    default: 'black'
+    required: true
   },
   hasOffset: {
     type: Boolean,
@@ -44,12 +44,14 @@ const props = defineProps({
 
 const aditionalClasses = computed(() => ({
   'element--offset': props.hasOffset,
-  'element--selected': props.isSelected
+  'element--selected': props.isSelected,
+  [props.category]: true
 }))
 </script>
 
 <style scoped lang="scss">
 @use '~@/style/variables';
+@use '~@/style/elements';
 
 .element {
   display: flex;
@@ -66,10 +68,12 @@ const aditionalClasses = computed(() => ({
   transition: variables.$default-transition;
   user-select: none;
 
-  &:hover,
-  &--selected {
-    color: variables.$dark;
-    background-color: v-bind('props.color');
+  @each $category, $color in elements.$colors {
+    &.#{$category}:hover,
+    &--selected.#{$category} {
+      color: variables.$dark;
+      background-color: $color;
+    }
   }
 
   &__number {
