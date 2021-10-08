@@ -1,8 +1,8 @@
 <template>
   <section class="table">
-    <Legend />
-
     <div class="table__container">
+      <Legend />
+
       <div
         class="table__row"
         v-for="(row, rowIndex) in commomElements"
@@ -79,9 +79,8 @@ function defineCategory(rawCategory) {
 @use '~@/style/variables';
 
 .table {
-  position: relative;
-
   &__container {
+    position: relative;
     width: #{18 * (variables.$element-width + 0.22rem)};
     margin: auto;
   }
