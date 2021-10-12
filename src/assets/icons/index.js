@@ -1,8 +1,11 @@
 import Unicon from 'vue-unicons'
 import {
   uniAngleDown,
+  uniAtom,
   uniBars,
   uniCheck,
+  uniImage,
+  uniInfoCircle,
   uniMultiply,
   uniObjectGroup,
   uniSearch,
@@ -16,7 +19,10 @@ Unicon.add([
   uniAngleDown,
   uniCheck,
   uniSearch,
-  uniTimes
+  uniTimes,
+  uniInfoCircle,
+  uniAtom,
+  uniImage
 ])
 
 export default Unicon

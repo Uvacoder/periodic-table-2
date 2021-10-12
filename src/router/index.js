@@ -8,15 +8,40 @@ const routes = [
     path: '/',
     name: 'Table',
     component: Table
+  },
+  {
+    path: '/:element',
+    name: 'Details',
+    component: () =>
+      import(/* webpackChunkName: "details" */ '@/views/details'),
+    redirect: { name: 'DetailsInfos' },
+    children: [
+      {
+        path: 'infos',
+        name: 'DetailsInfos',
+        component: () =>
+          import(
+            /* webpackChunkName: "infos" */ '@/views/details/modules/infos.vue'
+          )
+      },
+      {
+        path: 'model',
+        name: 'DetailsModel',
+        component: () =>
+          import(
+            /* webpackChunkName: "infos" */ '@/views/details/modules/infos.vue'
+          )
+      },
+      {
+        path: 'images',
+        name: 'DetailsImages',
+        component: () =>
+          import(
+            /* webpackChunkName: "infos" */ '@/views/details/modules/infos.vue'
+          )
+      }
+    ]
   }
-  // {
-  //   path: '/about',
-  //   name: 'About',
-  //   // route level code-splitting
-  //   // this generates a separate chunk (about.[hash].js) for this route
-  //   // which is lazy-loaded when the route is visited.
-  //   component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
-  // }
 ]
 
 const router = createRouter({
