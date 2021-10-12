@@ -67,6 +67,7 @@ const aditionalClasses = computed(() => ({
   background-color: variables.$light;
   transition: variables.$default-transition;
   user-select: none;
+  cursor: pointer;
 
   @each $category, $color in elements.$colors {
     &.#{$category}:hover,

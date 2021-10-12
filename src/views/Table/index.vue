@@ -17,6 +17,7 @@
           :category="defineCategory(element.category)"
           :has-offset="hasOffsetByNumber(element.number)"
           :is-selected="isSelected(element)"
+          @click="() => handleDetails(element.name)"
         />
       </div>
 
@@ -35,6 +36,7 @@
             :category="defineCategory(element.category)"
             :has-offset="!elIndex"
             :is-selected="isSelected(element)"
+            @click="() => handleDetails(element.name)"
           />
         </div>
       </div>
@@ -43,6 +45,8 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router'
+
 // Data
 import { elements } from '@/assets/data/elements.json'
 
@@ -52,6 +56,8 @@ import Element from '@/components/Element'
 
 // Composables
 import { isSelected } from './composables/selection'
+
+const router = useRouter()
 
 const ELEMENTS_NUMBERS_OFFSET = [2, 5, 13, 72, 104]
 
@@ -72,6 +78,13 @@ function hasOffsetByNumber(number) {
 
 function defineCategory(rawCategory) {
   return rawCategory.replace(/-|\s|,/gi, '_')
+}
+
+function handleDetails(elementName) {
+  router.push({
+    name: 'Details',
+    params: { element: elementName.toLowerCase() }
+  })
 }
 </script>
 
