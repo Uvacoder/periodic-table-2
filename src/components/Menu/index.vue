@@ -1,5 +1,5 @@
 <template>
-  <sidebar class="menu" :class="additionalClasses">
+  <aside class="menu" :class="additionalClasses">
     <header class="menu__header">
       <span class="menu__toggle" @click="toggleMenu">
         <unicon :name="defineToggleIcon" />
@@ -28,7 +28,7 @@
         />
       </MenuItem>
     </ul>
-  </sidebar>
+  </aside>
 </template>
 
 <script setup>
